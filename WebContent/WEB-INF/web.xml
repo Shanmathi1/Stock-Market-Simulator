@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>StockMarket_Simulator</display-name>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>StockFrontController</display-name>
+    <servlet-name>StockFrontController</servlet-name>
+    <servlet-class>com.stock.controller.StockFrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StockFrontController</servlet-name>
+    <url-pattern>/RegistrationForm.action</url-pattern>
+    <url-pattern>/Login.action</url-pattern>
+    <url-pattern>/Retrievecompanystock.action</url-pattern>
+    <url-pattern>/BuyStock.action</url-pattern>
+    <url-pattern>/BuyMoney.action</url-pattern>
+    <url-pattern>/SellStock.action</url-pattern>
+  </servlet-mapping>
+</web-app>

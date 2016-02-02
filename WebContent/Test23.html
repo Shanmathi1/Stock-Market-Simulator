@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>Welcome</title>
+  <link href="css/ticker.css" rel="stylesheet">
+  <script src=
+  "http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+  </script>
+  <script src="js/ticker.js" type="text/javascript">
+  </script>
+  <script src="js/fav.js" type="text/javascript">
+  </script>
+  <link href=
+  "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel=
+  "stylesheet">
+  <script src=
+  "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
+  </script>
+  <script src="http://yui.yahooapis.com/3.18.1/build/yui/yui-min.js">
+  </script>
+  <script type="text/javascript">
+           $(window).load(function() {
+               StockPriceTicker();
+               setInterval(function() {
+                   StockPriceTicker();
+               }, 60000);
+               document.getElementById('service').style.visibility = 'hidden';
+               document.getElementById('rssfeed').style.visibility = 'hidden';
+               main();   
+           });
+           // run
+
+
+  </script>
+  <link href="css/styleSearch.css" rel="stylesheet" type="text/css">
+  <script src="js/stocks.js" type="text/javascript">
+  </script>
+  <link href="css/styleTable.css" rel="stylesheet" type="text/css">
+  <link href="css/Normalize.css" rel="stylesheet" type="text/css">
+</head>
+<body style="background-color:#333333">
+  <div class="navbar navbar-fixed-top navbar-inverse">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Stock Market Simulator</a>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="index.html"><span class="glyphicon glyphicon-home"></span>
+          Home</a>
+        </li>
+        <li>
+          <a href="register.html"><span class=
+          "glyphicon glyphicon-user"></span> Sign Up</a>
+        </li>
+        <li>
+          <a href="index.html"><span class=
+          "glyphicon glyphicon-log-out"></span> LogOut</a>
+        </li>
+      </ul>
+    </div><!-- /.container -->
+  </div><!-- /.navbar -->
+  <br>
+  <br>
+  <br>
+  <div id="StockTickerContainer" style=
+  "height: 32px; line-height: 32px; overflow: hidden;">
+    <div class='stockTicker' id='dvStockTicker'></div>
+  </div><br>
+  <br>
+  <ul class="nav nav-tabs">
+    <li class="active">
+      <a data-toggle="tab" href="#portfolio">My Portfolio</a>
+    </li>
+    <li>
+      <a data-toggle="tab" href="#search">Search</a>
+    </li>
+    <li>
+      <a data-toggle="tab" href="#market">Market</a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane fade in active" id="portfolio">
+      <br>
+      <p class="title-name">Welcome username!</p>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-6">
+              <p class="money">Amount of Virtual Money:</p>
+            </div>
+            <div class="col-md-6">
+              <p class="money">$<span id=
+              "virtualMoney">100<span></span></span></p>
+            </div>
+          </div><span id="virtualMoney"><br></span>
+          <div class="row">
+            <span id="virtualMoney"></span>
+            <div class="col-md-3">
+              <span id="virtualMoney"><label class="money" for="money" style=
+              "text-align:left">Buy More:</label></span>
+            </div><span id="virtualMoney"></span>
+            <div class="col-md-3">
+              <span id="virtualMoney"><input class="form-control custom" id=
+              "money" placeholder="Amount" type="text"></span>
+            </div><span id="virtualMoney"></span>
+            <div class="col-md-6">
+              <span id="virtualMoney"><button class="btn btn-default"
+              data-target="#myModalMain" data-toggle="modal" onclick=
+              "myFunctionPayment()" type="submit"><span id=
+              "virtualMoney"><span id="virtualMoney">Buy<span class=
+              "glyphicon glyphicon-shopping-cart"></span></span></span></button></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <table class="rwd-table" id="userShareTable" style=
+          "border: 1px solid black;" width="400">
+            <tbody>
+              <tr style=
+              "font-size: 14px; font-family: Arial,Helvetica,sans-serif; font-weight: bold; color:#DDDD55;">
+              <td>Symbol</td>
+                <td>Company</td>
+                <td>No.of Shares</td>
+                <td>RateToday</td>
+              </tr>
+              <tr style=
+              "font-family: Arial,Helvetica,sans-serif; font-size: 14px; padding: 0px 2px;">
+              <td id="userSymbol">YHOO</td>
+                <td id="userCompany">YAHOO</td>
+                <td id="noShares">10</td>
+                <td id="rateToday">$17.42</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <script>
+                         function myFunctionPayment() {
+                             var y;
+                             if (document.getElementById("money").value == "") {
+                                 y = parseInt(0);
+                             } else {
+                                 y = parseInt(document.getElementById("money").value);
+                             }
+                             document.getElementById("total").innerHTML = "$" + y.toFixed(2);
+
+                         }
+      </script> <!-- Modal -->
+      <div aria-labelledby="myModalLabel" class="modal fade" id="myModalMain"
+      role="dialog" tabindex="-1">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button aria-label="Close" class="close" data-dismiss="modal"
+              type="button"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Payment</h4>
+            </div>
+            <div class="modal-body">
+              <div class="control-group">
+                <label class="control-label">Card Holder's Name</label>
+
+                <div class="controls inner-addon left-addon">
+                  <i class="glyphicon glyphicon-user"></i> 
+                  <input class=
+                  "form-control" placeholder=
+                  "First and Last Name" required="" title="First and last name"
+                  type="text" >
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label">Card Number</label>
+                <div class="controls inner-addon left-addon">
+                  <i class="glyphicon glyphicon-credit-card"></i>
+                  <input autocomplete="off" class="form-control" maxlength="16"
+                  pattern="\d{16}" placeholder="Card Number" required="" type=
+                  "text">
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label">Card Expiry Date</label>
+                <div class="controls">
+                  <div class="row">
+                    <div class="col-md-9">
+                      <select class="form-control" name="cc_exp_mo">
+                        <option value="01">
+                          January
+                        </option>
+                        <option value="02">
+                          February
+                        </option>
+                        <option value="03">
+                          March
+                        </option>
+                        <option value="04">
+                          April
+                        </option>
+                        <option value="05">
+                          May
+                        </option>
+                        <option value="06">
+                          June
+                        </option>
+                        <option value="07">
+                          July
+                        </option>
+                        <option value="08">
+                          August
+                        </option>
+                        <option value="09">
+                          September
+                        </option>
+                        <option value="10">
+                          October
+                        </option>
+                        <option value="11">
+                          November
+                        </option>
+                        <option value="12">
+                          December
+                        </option>
+                      </select>
+                    </div>
+                    <div class="col-md-3">
+                      <select class="form-control" name="cc_exp_yr">
+                        <option>
+                          2015
+                        </option>
+                        <option>
+                          2016
+                        </option>
+                        <option>
+                          2017
+                        </option>
+                        <option>
+                          2018
+                        </option>
+                        <option>
+                          2019
+                        </option>
+                        <option>
+                          2020
+                        </option>
+                        <option>
+                          2021
+                        </option>
+                        <option>
+                          2022
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label">Card CVV</label>
+                <div class="controls">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <input autocomplete="off" class="form-control" maxlength=
+                      "3" pattern="\d{3}" placeholder="CVV" required="" title=
+                      "Three digits at back of your card" type="text">
+                    </div>
+                    <div class="col-md-8"></div>
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <div class="control-group">
+                <b>Order Total:</b>
+                <p id="total"></p>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-default" data-dismiss="modal" type=
+              "button">Cancel</button> <button class="btn btn-primary" type=
+              "button">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="search">
+      <div class="row">
+        <div class="col-md-6">
+          <table align="center" border="0" cellpadding="0" cellspacing="0"
+          width="90%">
+            <tbody>
+              <tr valign="top">
+                <td align="left" class="normalText">
+                  <div class="row">
+                    <div class="col-md-6 yui3-skin-sam">
+                      <style>
+                                            #ac-input {
+                                            width: 17em;
+                                            }
+                                            .yui3-aclist {
+                                            width: 17em;
+                                            }
+                      </style><!--
+<input name="txtQuote" class="form-control" id="symbol" onkeypress="return CheckEnter(event);" value="YHOO" type="text" />
+-->
+                      <span><input class="form-control" id="ac-input" name=
+                      "txtQuote" onkeypress="return CheckEnter(event);" style=
+                      "display: inline;" type="text" value="YHOO"> 
+                      <script src="js/auto_complete.js">
+                      </script> <button class="btn btn-default" id="btnQuote"
+                      onclick="return SendRequest();" type=
+                      "submit"><span><span><span class=
+                      "glyphicon glyphicon-search"></span></span></span></button></span>
+                    </div>
+                    <div class="col-md-3">
+                      <input class="form-control" id="shares" placeholder=
+                      "No.of Shares" type="text">
+                    </div>
+                    <div class="col-md-3">
+                      <button class="btn btn-default" data-target="#myModal"
+                      data-toggle="modal" onclick="myFunction()" type=
+                      "submit">Buy<span class=
+                      "glyphicon glyphicon-shopping-cart"></span></button> 
+                      <script>
+                                                                             function myFunction() {
+
+
+                                                                                 var x = parseFloat(document.getElementById("shareTable").rows[1].cells.namedItem("result").innerHTML);
+                                                                                 document.getElementById("oneShare").innerHTML = "$" + x.toFixed(2);
+
+                                                                                 var y;
+                                                                                 if (document.getElementById("shares").value == "") {
+                                                                                     y = parseInt(0);
+                                                                                 } else {
+                                                                                     y = parseInt(document.getElementById("shares").value);
+                                                                                 }
+
+                                                                                 document.getElementById("totalAmount").innerHTML = "$" + (x * y).toFixed(2);
+                                                                                 var z = parseFloat(document.getElementById("virtualMoney").innerHTML);
+                                                                                 document.getElementById("moneyVirtual").innerHTML = "$" + z.toFixed(2);
+                                                                                 if (parseFloat(x * y) <= parseFloat(z)) {
+                                                                                     document.getElementById("resultShare").innerHTML = "You have money to buy the shares";
+                                                                                     document.getElementById("resultShare").className = "greenText";
+                                                                                     document.getElementById('buyShare').style.visibility = 'visible';
+                                                                                 } else {
+                                                                                     document.getElementById("resultShare").innerHTML = "You do not have money to buy the shares";
+                                                                                     document.getElementById("resultShare").className = "redText";
+                                                                                     document.getElementById('buyShare').style.visibility = 'hidden';
+                                                                                 }
+
+                                                                             }
+                      </script>
+                    </div><!-- Modal -->
+                    <div aria-labelledby="myModalLabel" class="modal fade" id=
+                    "myModal" role="dialog" tabindex="-1">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button aria-label="Close" class="close"
+                            data-dismiss="modal" type=
+                            "button"><span aria-hidden=
+                            "true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Buy
+                            Share</h4>
+                          </div>
+                          <div class="modal-body">
+                            <div class="control-group">
+                              <b>Value of one share:</b> <span id=
+                              "oneShare"></span>
+                            </div><br>
+                            <div class="control-group">
+                              <b>Total Amount:</b> <span id=
+                              "totalAmount"></span>
+                            </div><br>
+                            <div class="control-group">
+                              <b>Amount of virtual money:</b> <span id=
+                              "moneyVirtual"></span>
+                            </div><br>
+                            <div class="control-group">
+                              <span id="resultShare"></span><br>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button class="btn btn-default" data-dismiss=
+                            "modal" type="button">Cancel</button>
+                            <button class="btn btn-primary" id="buyShare" type=
+                            "button">Buy</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div><br>
+                  </div>
+                  <div id="service" style="padding:10px 0;">
+                    <table class="rwd-table" id="shareTable" style=
+                    "border: 1px solid black;" width="600">
+                      <tbody>
+                        <tr style=
+                        "font-size: 14px; font-family: Arial,Helvetica,sans-serif; font-weight: bold; color:#DDDD55;">
+                        <td>Symbol</td>
+                          <td>Company</td>
+                          <td>Time</td>
+                          <td>Trade</td>
+                          <td>% Chg</td>
+                          <td>Bid</td>
+                          <td>Volume</td>
+                        </tr>
+                        <tr style=
+                        "font-family: Arial,Helvetica,sans-serif; font-size: 14px; padding: 0px 2px;">
+                        <td id="name">YHOO</td>
+                          <td id="company">YAHOO</td>
+                          <td id="time">5:00pm</td>
+                          <td id="result">$17.42</td>
+                          <td id="chg">+0.36(+2.11%)</td>
+                          <td id="bid">17.30</td>
+                          <td id="volume">19,455,986</td>
+                        </tr>
+                      </tbody>
+                    </table><br>
+                    <img border="0" id="imgChart_0" src=
+                    "stock_chart_yahoo_finance/yhoo.png"><br>
+                    <a class="linkText" href=
+                    'javascript:changeChart(0,0,%20&quot;y/yhoo&quot;,%20&quot;YHOO&quot;);'>
+                    <span id="div1d_0">1d</span></a>&nbsp;&nbsp; <a class=
+                    "linkText" href=
+                    'javascript:changeChart(1,0,%20&quot;y/yhoo&quot;,%20&quot;YHOO&quot;);'>
+                    <span id="div5d_0">5d</span></a>&nbsp;&nbsp; <a class=
+                    "linkText" href=
+                    'javascript:changeChart(2,0,%20&quot;y/yhoo&quot;,%20&quot;YHOO&quot;);'>
+                    <span id="div3m_0">3m</span></a>&nbsp;&nbsp; <a class=
+                    "linkText" href=
+                    'javascript:changeChart(3,0,%20&quot;y/yhoo&quot;,%20&quot;YHOO&quot;);'>
+                    <span id="div6m_0">6m</span></a>&nbsp;&nbsp; <a class=
+                    "linkText" href=
+                    'javascript:changeChart(4,0,%20&quot;y/yhoo&quot;,%20&quot;YHOO&quot;);'>
+                    <span id="div1y_0">1y</span></a>&nbsp;&nbsp; <a class=
+                    "linkText" href=
+                    'javascript:changeChart(5,0,%20&quot;y/yhoo&quot;,%20&quot;YHOO&quot;);'>
+                    <span id="div2y_0">2y</span></a>&nbsp;&nbsp; <a class=
+                    "linkText" href=
+                    'javascript:changeChart(6,0,%20&quot;y/yhoo&quot;,%20&quot;YHOO&quot;);'>
+                    <span id="div5y_0">5y</span></a>&nbsp;&nbsp; <a class=
+                    "linkText" href=
+                    'javascript:changeChart(7,0,%20&quot;y/yhoo&quot;,%20&quot;YHOO&quot;);'
+                    id="link1"><span id="divMax_0"><b>msx</b></span></a><br>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+       
+        <div class="col-md-6" id="rssfeed">
+          <br>
+<iframe id="newsFeed"  height="500"  width="500" scrolling="no" name="rssmikle_frame" marginwidth="0" marginheight="0" vspace="0" hspace="0" frameborder="0"></iframe>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="market">
+      <br><br>
+<div class="row">
+
+   <div class="col-md-6">
+<iframe frameborder="0" scrolling="yes" height="500" width="580" allowtransparency="true" marginwidth="0" marginheight="0" src="http://eqrates.investing.com/index.php?pairs_ids=277;347;6369;6408;474;243;282;346;396;238;284;247;240;260;241;271;352;6974;7888;26490;8193;308;280;251;8082;8177;267;287;272;252;334;409;402;305;651;295;469;667;7997;7992;&header-text-color=%230058b0&header-bg=%23ffffff&curr-name-color=%230058b0&inner-text-color=%23000000&green-text-color=%232A8215&green-background=%23B7F4C2&red-text-color=%23DC0001&red-background=%23FFE2E2&inner-border-color=%23CBCBCB&border-color=%23cbcbcb&bg1=%23F6F6F6&bg2=%23ffffff&last_update=show"></iframe>
+</div>
+
+<div class="col-md-1">
+</div>
+
+  <div class="col-md-2">
+    
+  <iframe frameborder="0" scrolling="no" height="500" width="500" allowtransparency="true" marginwidth="0" marginheight="0" src="http://tools.investing.com/market_quotes.php?tabs=1,2,3,4&tab_1=1,2,3,5,7,9,11,13,18,39&tab_2=27,166,167,168,170,172,174,175,176,40830&tab_3=8830,8831,8833,8836,8849,8862,8883,8910,8917,8988&tab_4=8880,8907,8900,8899,8886,8895,8905,8906,8986,13917&select_color=000000&default_color=0059b0"></iframe><br />
+ 
+   </div>
+
+<div class="col-md-3">
+</div>
+
+    </div>
+    </div>
+  </div>
+</body>
+</html>

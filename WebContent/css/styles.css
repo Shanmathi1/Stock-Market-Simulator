@@ -1,0 +1,49 @@
+
+.top-buffer { margin-top:20px; }
+
+.classWithPad { margin:2px; padding:2px; }
+
+.btn-all{
+	color: white;
+	padding: 30px 95px;
+    font-size: 22px;
+    line-height: normal;
+    border-color: #333333;
+        -webkit-border-radius: 8px;
+       -moz-border-radius: 8px;
+            border-radius: 8px;
+}
+
+.btn-login {
+ 
+    background-color: #8FB224;
+
+    }
+
+    .btn-register {
+
+    background-color: #5252CC;
+
+    }
+
+    .btn-about {
+    background-color: #CCCC00;
+    }
+
+    .btn-contact {
+
+    background-color: #8654AB;
+    }
+
+    .row > div > img { width: 100%; display: block; }
+
+
+/*And then change */
+  .container .img-responsive {
+    display: block;
+    height: 300px;
+    max-width: 100%;
+} 
+
+
+

@@ -1,0 +1,32 @@
+body, form, ul, li, p, h2, h3, h4, h5{margin: 0;padding: 0;}
+body {background-color: #ffffff; color: #666; }
+#formId img { border: none; }
+#formId p{margin: 0 0 1em 0;}
+#formId h2 { font-size: 14px; margin: 0 0 12px; }
+#formId{margin: 20px auto;width: 500px;}
+#formId fieldset{margin: 0 0 20px;padding: 20px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;}
+#formId ol{list-style-type: none;padding: 0;margin: 0;}
+#formId li{margin: 0 0 12px;position: relative;}
+#formId label{width: 150px;display: inline-block;vertical-align: top;}
+legend{ color:#00C492;}
+#formId fieldset input,#formId fieldset select{background: #fff url(ico_validation.png) 260px 24px no-repeat;display: inline-block;width: 250px;border: 1px solid #00C492;padding: 3px 26px 3px 3px;-moz-transition: background-color 1s ease;-webkit-transition: background-color 1s ease;-o-transition: background-color 1s ease;transition: background-color 1s ease;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;}
+#formId fieldset textarea{display: inline-block;width: 250px;border: 1px solid #00C492;padding: 3px 26px 3px 3px;-moz-transition: background-color 1s ease;-webkit-transition: background-color 1s ease;-o-transition: background-color 1s ease;transition: background-color 1s ease;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px; resize:none; }
+#formId fieldset input[type="checkbox"]{width:20px;}
+#formId fieldset input[type="radio"]{width:20px;}
+#formId fieldset select{ width: 280px; padding: 3px; }
+#formId fieldset #postcode{ padding: 3px; width: 270px; }
+#formId input::-webkit-input-placeholder,#formId input:-moz-placeholder input:placeholder{color: #f2f2f2;}
+#formId .validation01{background: #F08080;color: #fff;display: none;font-size: 12px;padding: 3px;position: absolute;right: -160px;text-align: center;top: 0;width: 150px;outline: 0;-moz-box-shadow: 0px 0px 4px #ffffff;-webkit-box-shadow: 0px 0px 4px #ffffff;box-shadow: 0px 0px 4px #ffffff;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;}
+#formId input:focus + .validation01{ display: block; }
+#formId input:focus:required:invalid + .validation01 .valid,#formId input.error:focus + .validation01 .valid,#formId input.required:focus + .validation01 .valid,#formId input:focus + .validation01 .valid{ display: none; }
+#formId input:focus:required:valid + .validation01,#formId input.valid:focus + .validation01{ background: green; }
+#formId input:focus:required:valid + .validation01 .invalid,#formId input.valid:focus + .validation01 .invalid{ display: none; }
+#formId input:focus:required:valid + .validation01 .valid,#formId input.valid:focus + .validation01 .valid{ display: block; }
+#formId fieldset input:required:valid{background-color: #fff;background-position: 260px -61px;}
+#formId input.error{background-color: #F08080; background-position: 260px 3px;outline: none; }
+#formId input.required{background-color: #fff; background-position: 260px -30px;}
+#formId input.valid { background-color: #fff;background-position: 260px -61px;}
+#formId input.error::-webkit-input-placeholder,#formId inputerror :-moz-placeholder {color: #f2f2f2;}
+input[type="submit"]{background: #00C492; border:none; width:200px; margin:auto; float:right; padding:5px; border-radius:5px; color:#fff; font-weight:bold; cursor:pointer;}
+input[type="submit"]:active{background: #00C492; border:none; width:200px; margin:auto; float:right; padding:5px; border-radius:5px; color:#fff; font-weight:bold; cursor:pointer;}
+input[type="submit"]:target{background: #00C492; border:none; width:200px; margin:auto; float:right; padding:5px; border-radius:5px; color:#fff; font-weight:bold; cursor:pointer;}
